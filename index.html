@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TU TIENDA Shop</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #87CEEB; /* Azul claro */
+            color: #fff;
+            padding: 20px;
+            display: flex; /* Alinear elementos horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            justify-content: flex-start; /* Alinear a la izquierda */
+        }
+        .header-logo img {
+            width: 160px; /* Tamaño del logo */
+            height: auto; /* Mantener la proporción */
+            margin-right: 20px; /* Espacio entre el logo y el texto */
+        }
+        .header-text {
+            text-align: center; /* Centrar el texto */
+            flex-grow: 1; /* Ocupar el espacio restante */
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #003366; /* Azul marino */
+            padding: 10px;
+            display: flex;
+            justify-content: space-between; /* Separa los grupos */
+            align-items: center;
+        }
+        .nav-centro {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1; /* Ocupa el espacio restante */
+            margin-left: 200px; /* Mueve los botones más a la derecha */
+        }
+        .nav-derecha {
+            display: flex;
+            justify-content: flex-end; /* Alinea a la derecha */
+        }
+        nav button {
+            border: 0;
+            background-image: linear-gradient(
+                150deg,
+                #9500,
+                #09F,
+                #00DDFF
+            );
+            border-radius: 8px;
+            color: #fff;
+            display: inline-flex;
+            font-size: 18px;
+            padding: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 5px;
+        }
+        nav button span {
+            background-color: #111;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        nav button:hover span {
+            background: none;
+        }
+        nav button:active {
+            transform: scale(0.9);
+        }
+        main {
+            padding: 20px;
+            padding-bottom: 100px; /* Espacio adicional para el footer */
+        }
+        .productos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center; /* Centrar los recuadros horizontalmente */
+            max-width: 1200px; /* Ancho máximo del contenedor */
+            margin: 0 auto 80px; /* Margen inferior para separar del footer */
+        }
+        .producto {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px; /* Ancho fijo para los recuadros */
+            height: 450px; /* Altura fija para los recuadros */
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .producto img {
+            width: 100%; /* Ancho completo del recuadro */
+            height: 200px; /* Altura fija para las imágenes */
+            object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .producto h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .producto p {
+            font-size: 0.9em;
+            color: #555;
+            margin: 5px 0;
+        }
+        .producto button {
+            background-color: #003366;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .producto button:hover {
+            background-color: #002244;
+        }
+        footer {
+            background-color: #003366; /* Azul marino */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .carrito {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .carrito h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #003366;
+        }
+        .carrito ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .carrito li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .carrito li:last-child {
+            border-bottom: none;
+        }
+        .carrito p {
+            font-size: 1.2em;
+            color: #003366;
+            margin: 10px 0 0;
+        }
+        .contacto {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .contacto h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="Logo.jpg" alt="Logo de la tienda">
+        </div>
+        <div class="header-text">
+            <h1>Mundo Tech</h1>
+            <p>Tu lugar para comprar laptops, celulares y accesorios</p>
+        </div>
+    </header>
+    <nav>
+        <!-- Grupo 1: Botones centrados con margen a la derecha -->
+        <div class="nav-centro">
+            <button onclick="mostrarTodos()"><span>Todos</span></button>
+            <button onclick="mostrarCelulares()"><span>Celulares</span></button>
+            <button onclick="mostrarLaptops()"><span>Laptops</span></button>
+            <button onclick="mostrarAccesorios()"><span>Accesorios</span></button>
+        </div>
+        <!-- Grupo 2: Botones a la derecha -->
+        <div class="nav-derecha">
+            <button onclick="irAlCarrito()"><span>Carrito</span></button>
+            <button onclick="irAlContacto()"><span>Contacto</span></button>
+        </div>
+    </nav>
+    <main>
+        <div class="productos">
+            <!-- Productos: Laptops (7) -->
+            <div class="producto" data-categoria="laptops">
+                <img src="lenovoloq.jpg" alt="Laptop 1">
+                <h2>Laptop Gamer Lenovo LOQ Intel Core I5</h2>
+                <p>Laptop para gaming con tarjeta gráfica dedicada.</p>
+                <p><strong>Precio: S/3700</strong></p>
+                <button onclick="agregarAlCarrito('Laptop Gamer Lenovo LOQ Intel Core I5', 3700)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="laptops">
+                <img src="experto.jpeg" alt="Laptop 2">
+                <h2>Laptop ExpertBook Intel Core I5</h2>
+                <p>Laptop ligera y potente para trabajo y estudio.</p>
+                <p><strong>Precio: S/2300</strong></p>
+                <button onclick="agregarAlCarrito('Laptop ExpertBook Intel Core I5', 2300)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="laptops">
+                <img src="asusrog.jpeg" alt="Laptop 3">
+                <h2>Laptop ASUS ROG Strix G18 Intel Core I9</h2>
+                <p>Laptop gaming de alto rendimiento.</p>
+                <p><strong>Precio: S/9000</strong></p>
+                <button onclick="agregarAlCarrito('Laptop ASUS ROG Strix G18 Intel Core I9', 9000)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="laptops">
+                <img src="m2.jpeg" alt="Laptop 4">
+                <h2>MacBook Air M2</h2>
+                <p>Portátil ultradelgada, potente y gran autonomía.</p>
+                <p><strong>Precio: S/4200</strong></p>
+                <button onclick="agregarAlCarrito('MacBook Air M2', 4200)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="laptops">
+                <img src="m3.jpeg" alt="Laptop 5">
+                <h2>MacBook Air M3</h2>
+                <p>Diseño mejorado y eficiente para tareas diarias.</p>
+                <p><strong>Precio: S/5800</strong></p>
+                <button onclick="agregarAlCarrito('MacBook Air M3', 5800)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="laptops">
+                <img src="m4.jpeg" alt="Laptop 6">
+                <h2>MacBook Pro M4</h2>
+                <p>Potente, ideal para profesionales y alto rendimiento.</p>
+                <p><strong>Precio: S/8900</strong></p>
+                <button onclick="agregarAlCarrito('MacBook Pro M4', 8900)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="laptops">
+                <img src="ryzen7.jpeg" alt="Laptop 7">
+                <h2>Laptop Lenovo IdeaPad AMD Ryzen 7</h2>
+                <p>Laptop con pantalla táctil y modo tableta.</p>
+                <p><strong>Precio: S/3300</strong></p>
+                <button onclick="agregarAlCarrito('Laptop Lenovo IdeaPad AMD Ryzen 7', 3300)">Agregar</button>
+            </div>
+
+            <!-- Productos: Celulares (5) -->
+            <div class="producto" data-categoria="celulares">
+                <img src="iphone14.jpg" alt="Celular 1">
+                <h2>Iphone 14 Pro Max 128GB</h2>
+                <p>Rápido y potente, cámara de buena calidad.</p>
+                <p><strong>Precio: S/3900</strong></p>
+                <button onclick="agregarAlCarrito('Iphone 14 Pro Max 128GB', 3900)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="celulares">
+                <img src="iphone15.jpeg" alt="Celular 2">
+                <h2>Iphone 15 Pro Max 256GB</h2>
+                <p>Diseño elegante, cámaras mejoradas y rendimiento rápido.</p>
+                <p><strong>Precio: S/6200</strong></p>
+                <button onclick="agregarAlCarrito('Iphone 15 Pro Max 256GB', 6200)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="celulares">
+                <img src="iphone16.jpg" alt="Celular 3">
+                <h2>Iphone 16 Pro Max</h2>
+                <p>Avances en inteligencia artificial y pantalla superior.</p>
+                <p><strong>Precio: S/7100</strong></p>
+                <button onclick="agregarAlCarrito('Iphone 16 Pro Max', 7100)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="celulares">
+                <img src="galaxy24.jpg" alt="Celular 4">
+                <h2>Samsung Galaxy S24 Ultra 256GB</h2>
+                <p>Diseño elegante, cámara avanzada, buen rendimiento, pantalla nítida.</p>
+                <p><strong>Precio: S/3900</strong></p>
+                <button onclick="agregarAlCarrito('Samsung Galaxy S24 Ultra 256GB', 3900)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="celulares">
+                <img src="galaxy25.jpg" alt="Celular 5">
+                <h2>Samsung Galaxy S25 Ultra 256GB</h2>
+                <p>Innovador, cámara de 200MP, pantalla impresionante, rendimiento superior.</p>
+                <p><strong>Precio: S/5800</strong></p>
+                <button onclick="agregarAlCarrito('Samsung Galaxy S25 Ultra 256GB', 5800)">Agregar</button>
+            </div>
+
+            <!-- Productos: Accesorios (6) -->
+            <div class="producto" data-categoria="accesorios">
+                <img src="https://promart.vteximg.com.br/arquivos/ids/5552926-1000-1000/image-6b5c7ccc88844ffd873727f837027aeb.jpg?v=637866091747430000/300x200" alt="Accesorio 1">
+                <h2>Cargador Apple Iphone</h2>
+                <p>Cargador Tipo C de 20w.</p>
+                <p><strong>Precio: S/100</strong></p>
+                <button onclick="agregarAlCarrito('Cargador Apple Iphone', 100)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="accesorios">
+                <img src="https://www.lacuracao.pe/media/catalog/product/p/s/ps16736985_1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700/300x200" alt="Accesorio 2">
+                <h2>Cargador Samsung</h2>
+                <p>Carga rápida 45w.</p>
+                <p><strong>Precio: S/80</strong></p>
+                <button onclick="agregarAlCarrito('Cargador Samsung', 80)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="accesorios">
+                <img src="powerbank.jpeg" alt="Accesorio 3">
+                <h2>Power Bank Samsung</h2>
+                <p>Carga rápida Tipo C 45w 10000mah.</p>
+                <p><strong>Precio: S/150</strong></p>
+                <button onclick="agregarAlCarrito('Power Bank Samsung', 150)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="accesorios">
+                <img src="audifono.jpeg" alt="Accesorio 4">
+                <h2>Audífono Galaxy Buds3</h2>
+                <p>Cancelación de ruido y sonido envolvente de 360 grados.</p>
+                <p><strong>Precio: S/520</strong></p>
+                <button onclick="agregarAlCarrito('Audífono Galaxy Buds3', 520)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="accesorios">
+                <img src="cooler.jpeg" alt="Accesorio 5">
+                <h2>Cooler Teros para laptop</h2>
+                <p>Ajuste de 5 alturas(máximo 40°).</p>
+                <p><strong>Precio: S/80</strong></p>
+                <button onclick="agregarAlCarrito('Cooler Teros para laptop', 80)">Agregar</button>
+            </div>
+            <div class="producto" data-categoria="accesorios">
+                <img src="mouse.jpeg" alt="Accesorio 6">
+                <h2>Mouse Inalámbrico Logitech</h2>
+                <p>Compatible con Windows y macOS.</p>
+                <p><strong>Precio: S/65</strong></p>
+                <button onclick="agregarAlCarrito('Mouse Inalámbrico Logitech', 65)">Agregar</button>
+            </div>
+        </div>
+
+        <!-- Carrito de compras -->
+        <div class="carrito">
+            <h3>Carrito de Compras</h3>
+            <ul id="carrito-lista"></ul>
+            <p>Total: S/<span id="total">0</span></p>
+            <button onclick="vaciarCarrito()" style="background-color: #ff6666; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Vaciar Carrito</button>
+        </div>
+
+        <!-- Sección de contacto -->
+        <div id="contacto" class="contacto">
+            <h3>Contacto</h3>
+            <p>¿Dudas o preguntas? ¡Contáctanos!</p>
+            <p>Email: info@mundotech.com</p>
+            <p>Teléfono: +51 123 456 789</p>
+        </div>
+    </main>
+    <footer>
+        <small>&copy; 2025 Mundo Tech. Todos los derechos reservados.</small>
+    </footer>
+
+    <script>
+        // Funciones para filtrar productos
+        function mostrarTodos() {
+            const productos = document.querySelectorAll('.producto');
+            productos.forEach(producto => producto.style.display = 'block');
+        }
+
+        function mostrarLaptops() {
+            const productos = document.querySelectorAll('.producto');
+            productos.forEach(producto => {
+                if (producto.getAttribute('data-categoria') === 'laptops') {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        function mostrarCelulares() {
+            const productos = document.querySelectorAll('.producto');
+            productos.forEach(producto => {
+                if (producto.getAttribute('data-categoria') === 'celulares') {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        function mostrarAccesorios() {
+            const productos = document.querySelectorAll('.producto');
+            productos.forEach(producto => {
+                if (producto.getAttribute('data-categoria') === 'accesorios') {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        // Funcionalidad del carrito
+        let carrito = [];
+        let total = 0;
+
+        function agregarAlCarrito(nombre, precio) {
+            carrito.push({ nombre, precio });
+            total += precio;
+            actualizarCarrito();
+        }
+
+        function eliminarDelCarrito(index) {
+            const itemEliminado = carrito.splice(index, 1)[0];
+            total -= itemEliminado.precio;
+            actualizarCarrito();
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            total = 0;
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const carritoLista = document.getElementById('carrito-lista');
+            const totalElement = document.getElementById('total');
+            carritoLista.innerHTML = '';
+            carrito.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item.nombre} - S/${item.precio}`;
+
+                // Crear botón de eliminación (X)
+                const botonEliminar = document.createElement('button');
+                botonEliminar.textContent = 'X';
+                botonEliminar.style.backgroundColor = '#ff6666'; // Rojo claro
+                botonEliminar.style.color = 'white';
+                botonEliminar.style.border = 'none';
+                botonEliminar.style.borderRadius = '5px';
+                botonEliminar.style.marginLeft = '10px';
+                botonEliminar.style.cursor = 'pointer';
+                botonEliminar.onclick = () => eliminarDelCarrito(index);
+
+                li.appendChild(botonEliminar);
+                carritoLista.appendChild(li);
+            });
+            totalElement.textContent = total;
+        }
+
+        function irAlCarrito() {
+            document.querySelector('.carrito').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function irAlContacto() {
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
